@@ -8,7 +8,7 @@ const userRouter = require('./routes/userRouter');
 
 const app = express();
 
-const PORT = 3000 || 3500;
+const PORT = 3500;
 
 // custom middleware logger
 app.use(logger);
