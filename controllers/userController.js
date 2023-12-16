@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 const BATCH_LIMIT = 20;
 const convertQueryToNum = require('../utils/convertQueryToNum');
 const { generateDataByBatch, sendResponse } = require('../utils/generateUsers');

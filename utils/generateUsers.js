@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 const applyErrors = require('./applyErrors');
 const { generateName, generateAddress, generatePhone } = require('./faker');
 
