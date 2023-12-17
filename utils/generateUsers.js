@@ -60,7 +60,7 @@ const generateUsers = async (faker, batchSize, totalErr, locale) => {
 };
 
 const generateUniqueUsers = async (
-  faker, errorRate, batchSize, totalErr, locale, uniqueUsers = new Map(),
+  faker, errorRate, batchSize, totalErr, locale,uniqueUsers = new Map()
 ) => {
   try {
     if (uniqueUsers.size >= batchSize) {
@@ -81,7 +81,7 @@ const generateUniqueUsers = async (
     });
 
     // Recursively call the function to continue generating until batchSize is reached
-    return generateUniqueUsers(faker, errorRate, batchSize, totalErr, locale, uniqueUsers);
+    return generateUniqueUsers(faker, errorRate, batchSize, totalErr, locale,uniqueUsers);
   } catch (error) {
     console.error('Error generating unique users:', error);
   }
