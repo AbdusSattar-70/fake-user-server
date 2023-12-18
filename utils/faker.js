@@ -1,7 +1,6 @@
 const { allFakers, faker } = require('@faker-js/faker');
-const seedrandom = require('seedrandom');
-const memoize = require('./memoize');
-const generateLookupTable = require('./lookupTable');
+// const memoize = require('./memoize');
+// const generateLookupTable = require('./lookupTable');
 
 const phoneStructures = {
   de: '+49 123 4567890',
@@ -16,27 +15,27 @@ const phoneStructures = {
   zh_CN: '+86 13512345678',
 };
 
-const generateLookupMemo = memoize(generateLookupTable);
+// const generateLookupMemo = memoize(generateLookupTable);
 
 const generateName = (faker) => {
-  const names = generateLookupMemo(faker.person.firstName);
-  const middleNames = generateLookupMemo(faker.person.middleName);
-  const lastNames = generateLookupMemo(faker.person.lastName);
-  const firstName = faker.helpers.arrayElement(names);
-  const middleName = faker.helpers.arrayElement(middleNames);
-  const lastName = faker.helpers.arrayElement(lastNames);
+  const firstName = faker.person.firstName()
+  const middleName = faker.person.middleName()
+  const lastName = faker.person.lastName()
+  // const firstName = faker.helpers.arrayElement(names);
+  // const middleName = faker.helpers.arrayElement(middleNames);
+  // const lastName = faker.helpers.arrayElement(lastNames);
   return { firstName, middleName, lastName };
 };
 
 const generateAddress = (faker) => {
-  const cities = generateLookupMemo(faker.location.city);
-  const streets = generateLookupMemo(faker.location.streetAddress);
-  const countries = generateLookupMemo(faker.location.country);
-  const zipCodes = generateLookupMemo(faker.location.zipCode);
-  const city = faker.helpers.arrayElement(cities);
-  const street = faker.helpers.arrayElement(streets);
-  const country = faker.helpers.arrayElement(countries);
-  const zipCode = faker.helpers.arrayElement(zipCodes);
+  const city = faker.location.city()
+  const street = faker.location.streetAddress()
+  const country = faker.location.country()
+  const zipCode = faker.location.zipCode()
+  // const city = faker.helpers.arrayElement(cities);
+  // const street = faker.helpers.arrayElement(streets);
+  // const country = faker.helpers.arrayElement(countries);
+  // const zipCode = faker.helpers.arrayElement(zipCodes);
   return {
     city, street, country, zipCode,
   };
@@ -52,7 +51,6 @@ const generatePhone = (faker, locale) => {
 
 const switchFakerLocale = (region) => allFakers[region] || faker;
 
-// const attachSeed = (faker, seed) => faker.seed(Math.abs(seedrandom(seed).int32()));
 const attachSeed = (faker, seed) => faker.seed(seed);
 
 module.exports = {
