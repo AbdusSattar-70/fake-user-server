@@ -1,14 +1,15 @@
 const memoize = (fn) => {
-  const cache = {};
+  const cache = new Map();
 
-  return (...args) => {
-    const key = JSON.stringify(fn(...args));
-    if (key in cache) {
-      return cache[key];
+  return async (...args) => {
+    const key = args.map(arg => (typeof arg === 'object' ? arg.constructor.name : arg)).join('|');
+
+    if (cache.has(key)) {
+      return cache.get(key);
     }
 
-    const result = fn(...args);
-    cache[key] = result;
+    const result = await fn(...args);
+    cache.set(key, result);
     return result;
   };
 };

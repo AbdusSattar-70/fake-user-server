@@ -1,6 +1,6 @@
 const applyErrors = require('./applyErrors');
 const { generateName, generateAddress, generatePhone } = require('./faker');
-
+const memoize = require('../utils/memoize')
 const ERR_CONVERT = 1000;
 
 const generateUser = (faker, locale) => {
@@ -67,7 +67,8 @@ const generateUniqueUsers = async (
       return Array.from(uniqueUsers.values());
     }
 
-    const users = await generateUsers(faker, batchSize, totalErr, locale);
+    const users = await memoize(generateUsers)(faker, batchSize, totalErr, locale);
+
 
     // Check uniqueness based on identifier using filter
     users.forEach((user) => {

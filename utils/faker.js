@@ -1,6 +1,4 @@
 const { allFakers, faker } = require('@faker-js/faker');
-// const memoize = require('./memoize');
-// const generateLookupTable = require('./lookupTable');
 
 const phoneStructures = {
   de: '+49 123 4567890',
@@ -15,15 +13,11 @@ const phoneStructures = {
   zh_CN: '+86 13512345678',
 };
 
-// const generateLookupMemo = memoize(generateLookupTable);
 
 const generateName = (faker) => {
   const firstName = faker.person.firstName()
   const middleName = faker.person.middleName()
   const lastName = faker.person.lastName()
-  // const firstName = faker.helpers.arrayElement(names);
-  // const middleName = faker.helpers.arrayElement(middleNames);
-  // const lastName = faker.helpers.arrayElement(lastNames);
   return { firstName, middleName, lastName };
 };
 
@@ -32,10 +26,6 @@ const generateAddress = (faker) => {
   const street = faker.location.streetAddress()
   const country = faker.location.country()
   const zipCode = faker.location.zipCode()
-  // const city = faker.helpers.arrayElement(cities);
-  // const street = faker.helpers.arrayElement(streets);
-  // const country = faker.helpers.arrayElement(countries);
-  // const zipCode = faker.helpers.arrayElement(zipCodes);
   return {
     city, street, country, zipCode,
   };
