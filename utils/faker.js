@@ -52,7 +52,8 @@ const generatePhone = (faker, locale) => {
 
 const switchFakerLocale = (region) => allFakers[region] || faker;
 
-const attachSeed = (faker, seed) => faker.seed(Math.abs(seedrandom(seed).int32()));
+// const attachSeed = (faker, seed) => faker.seed(Math.abs(seedrandom(seed).int32()));
+const attachSeed = (faker, seed) => faker.seed(seed);
 
 module.exports = {
   switchFakerLocale,
